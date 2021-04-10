@@ -1,0 +1,1039 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  <title>Anleitung Jahresmeisterschaftsprogramm</title>
+  <link rel="stylesheet" type="text/css" href="schriftdef.css">
+  <!-- Drucken: In Datei drucken, Skalierung 68%, Skalierung ignorieren deaktivieren, Hintergrundfarben drucken aktivieren -->
+</head>
+<body>
+<img src="logo.png" height="153" width="179">
+<h1>Anleitung Jahresmeisterschaftsprogramm</h1>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<table style="width: 90%; text-align: left;" border="0" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; width: 20%; font-weight: bold;">Summary:</td>
+      <td style="vertical-align: top; width: 80%;" bgcolor="#ffff00">Dokumentation
+des Programmes zur Auswertung der Jahresmeisterschaft</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; width: 20%;">Verfasser:&nbsp;<br>
+      </td>
+      <td style="vertical-align: top; width: 80%;">Adrian
+B&ouml;hlen</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; width: 20%;">Datum:</td>
+      <td style="vertical-align: top; width: 80%;">2. April 2021</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; width: 20%;">Version:</td>
+      <td style="vertical-align: top; width: 80%;">2.0.16</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; width: 20%;">Basis:<br>
+      </td>
+      <td style="vertical-align: top; width: 80%;"><a target="_blank" href="http://www.fsbolligen.ch/dok/reglement_jahresmeisterschaft.pdf">Reglement Jahresmeisterschaft (2015)</a></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; width: 20%;">Status: </td>
+      <td style="vertical-align: top; width: 80%;">final</td>
+    </tr>
+  </tbody>
+</table>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<h3>Inhalt:</h3>
+<ul>
+  <li><a href="#1_einleitung">1 Einleitung</a>
+    <ul>
+      <li><a href="#1_1_zweck">1.1 Zweck</a></li>
+      <li><a href="#1_2_anf">1.2 Anforderungen an den Source-Code</a></li>
+      <li><a href="#1_3_kurzb">1.3 Kurzbeschreibung</a></li>
+    </ul>
+  </li>
+  <li><a href="#2_start">2 Installation und Start des Programmes</a>
+    <ul>
+      <li><a href="#2_1_voraussetzungen">2.1 Voraussetzungen</a></li>
+      <li><a href="#2_2_inst">2.2 Installation</a><br>
+      </li>
+      <li><a href="#2_3_start">2.3 Start des Programmes</a> </li>
+    </ul>
+  </li>
+  <li><a href="#3_erfassen">3 Erfassen der Resultate</a></li>
+  <li><a href="#4_kontrolle">4 Kontrolle</a></li>
+  <li><a href="#5_korrigieren">5 Korrigieren der Resultate</a> </li>
+  <li><a href="#6_ausw">6 Auswerten</a></li>
+  <li><a href="#6_rangliste">7 Generieren der Rangliste</a></li>
+  <li><a href="#7_wertpte">8 Generieren der Wertpunktetabelle</a>
+    <ul>
+      <li><a href="#nf_wert">8.1 Nachf&uuml;hren der
+Wertpunkteinformationen</a></li>
+      <li><a href="#abl_wert">8.2 Ableiten der grafischen
+Wertpunktetabelle</a></li>
+    </ul>
+  </li>
+  <li><a href="#wanderpr">9 Erstellen der Wanderpreistabelle</a> </li>
+  <li><a href="#faq">10 FAQ</a> </li>
+  <li><a href="#probleme_todo">11 Dokumentierte Probleme und ToDo List</a>
+    <ul>
+      <li><a href="#probleme">11.1 Dokumentierte Probleme</a></li>
+      <li><a href="#todo">11.2 ToDo List</a></li>
+    </ul>
+  </li>
+  <li><a href="#schiessb">12 Standbl&auml;tter und Schiessb&uuml;chlein</a>
+    <ul>
+      <li><a href="#standblatt">12.1 Standbl&auml;tter erzeugen</a></li>
+      <li><a href="#karte_drucken">12.2 Jahresmeisterschaftskarte
+drucken</a></li>
+      <li><a href="#stichuebersicht">12.3 &Uuml;bersicht &uuml;ber die
+geschossenen Stiche generieren</a></li>
+    </ul>
+  </li>
+  <li><a href="#glossar">13 Glossar</a></li>
+  <li><a href="#anhang">14 Anhang</a>
+    <ul>
+      <li><a href="#bef_ueb">14.1 Befehls&uuml;bersicht</a></li>
+      <li><a href="#abm_form">14.2 Abmessungen Formulare</a></li>
+      <li><a href="#testfaelle">14.3 Testf&auml;lle</a></li>
+    </ul>
+  </li>
+</ul>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="1_einleitung"></a>
+<h2 style="page-break-before:always";>1&nbsp;&nbsp;Einleitung</h2>
+<a name="1_1_zweck"></a>
+<h3>1.1&nbsp;&nbsp;Zweck</h3>
+<p>Das Programm dient dem
+Auswerten der Jahresmeisterschaft der
+Feldsch&uuml;tzengesellschaft Bolligen am Ende jeder Schiesssaison.
+Es
+f&uuml;hrt die komplexen Berechnungen soweit wie m&ouml;glich
+automatisch durch und gibt die Resultate in einer grafisch
+ansprechenden
+Form aus.</p>
+<p>Das Programm l&auml;uft unter allen g&auml;ngigen Betriebssystemen
+und stellt keine besonderen Anforderungen an die Hardware.</p>
+<a name="1_2_anf"></a>
+<h3>1.2&nbsp;&nbsp;Anforderungen an den Source-Code</h3>
+<ul>
+  <li>portabler Code,
+plattform-unabh&auml;ngig</li>
+  <li>sprechende Variablennamen</li>
+  <li>konsequente Verwendung von Open Source-Software</li>
+  <li>konsequente Verwendung offener und textbasierter Formate (ASCII, W3C, PDF)</li>
+  <li>flexibel &#8211; Reglements&auml;nderungen sollen ohne grossen Aufwand umgesetzt werden k&ouml;nnen </li>
+  <li>soweit wie m&ouml;glich Anwendung des <a target="_blank" href="https://de.wikipedia.org/wiki/Don%E2%80%99t_repeat_yourself">DRY-Prinzips</a> (derzeit noch nicht zufriedenstellend realisiert)</li>
+</ul>
+<a name="1_3_kurzb"></a>
+<h3>1.3&nbsp;&nbsp;Kurzbeschreibung</h3>
+<p>Das Programm basiert auf dem
+entsprechenden Reglement von 2015. Es
+ist in AWK geschrieben und kommandozeilen-orientiert.</p>
+<p>S&auml;mtliche Daten werden in einer Tabelle im Textformat CSV
+(comma separated values) gehalten. Die Vorg&auml;nge des
+Auswertungsprozesses werden in einer Log-Datei
+dokumentiert, welche im Arbeitsverzeichnis gespeichert wird. Sie hat
+folgende Struktur:<br>
+&lt;Jahr&gt;&lt;Monat&gt;&lt;Tag&gt;.log,
+also z.B. <span style="font-style: italic;">2004Oct24.log.</span><br>
+</p>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="2_start"></a>
+<h2>2&nbsp;&nbsp;Installation und Start des Programmes</h2>
+<a name="2_1_voraussetzungen"></a>
+<h3>2.1&nbsp;&nbsp;Voraussetzungen
+</h3>
+<p><span style="font-weight: bold;">UNIX / Linux</span></p>
+<p>Die Programmiersprache AWK geh&ouml;rt zum Standardumfang dieser Systeme. Vorausgesetzt wird Version 4.0.0 oder h&ouml;her. Zu installieren ist allenfalls ein HTML-Editor (z.B. Bluefish (<a href="http://bluefish.openoffice.nl/">http://bluefish.openoffice.nl/</a>)</p>
+
+<p><span style="font-weight: bold;">Mac OS X</span></p>
+<p>Die Programmiersprache AWK geh&ouml;rt auch bei Mac OS X zum
+Standardumfang und braucht nicht installiert zu werden.</p>
+<p>Zum manuellen Nachbearbeiten von HTML-Dateien ist ein HTML-Editor
+erforderlich (z.B. Bluefish (<a
+ href="http://bluefish.openoffice.nl/">http://bluefish.openoffice.nl/</a>).
+</p>
+<p><span style="font-weight: bold;">Windows</span></p>
+<p>Die Programmiersprache AWK geh&ouml;rt bei Windows leider nicht zum Standardumfang. Sie kann zwar manuell installiert werden (Download f&uuml;r Windows und weitere Systeme unter <a href="http://www.gnu.org/software/gawk/gawk.html">http://www.gnu.org/software/gawk/gawk.html</a>). Es handelt sich lediglich um eine einzelne Datei namens <span style="font-style: italic;">gawk.exe </span>(Dateigr&ouml;sse ca. 400 &#8211; 700 kB), die in einem beliebigen Ordner gespeichert werden kann. Die Konfiguration der Umgebungsvariablen ist aber m&uuml;hsam, daher ist es wesentlich einfacher, eine UNIX-Emulation zu installieren, wo dann AWK als Teil dieser Systeme auch zur Verf&uuml;gung steht. Folgende Varianten wurden getestet und k&ouml;nnen empfohlen werden:</p>
+<ul>
+  <li>git for Windows (enth&auml;lt die Kommandozeilenumgebung Bash mit allen elementaren Tools): <a href="https://gitforwindows.org/">https://gitforwindows.org/</a></li>
+  <li>Cygwin (Standardinstallation reicht): <a href="https://www.cygwin.com/">https://www.cygwin.com/</a></li>
+</ul>
+<p>Diese Shells k&ouml;nnen dann genauso wie in einem &laquo;echten&raquo; UNIX-System konfiguriert werden. Falls der dann ebenfalls verf&uuml;gbare Editor vim nicht ausreicht, empfiehlt es sich, zur komfortableren Bearbeitung der Textdateien noch folgende Editoren zu installieren:</p>
+<ul>
+    <li>ASCII-Editor: z.B. Notepad++ (<a
+ href="http://notepad-plus-plus.org/">http://notepad-plus-plus.org/</a>)</li>
+
+    <li>HTML-Editor: z.B. Bluefish (<a
+ href="http://bluefish.openoffice.nl/">http://bluefish.openoffice.nl/</a>)</li>
+  </ul>
+</ul>
+<a name="2_2_inst"></a>
+<h3>2.2&nbsp;&nbsp;Installation</h3>
+<p>Das
+Jahresmeisterschafts-Programm besteht aus der einzigen Datei
+&laquo;jahresmeisterschaft.awk&raquo;.
+Diese enth&auml;lt den kompletten Source-Code, welcher jeweils beim
+Aufruf kompiliert wird.</p>
+<p><span style="font-weight: bold;">UNIX / Linux / MacOS X</span>
+</p>
+<p>&laquo;jahresmeisterschaft.awk&raquo; kann in einem beliebigen
+Verzeichnis abgelegt werden. Als erstes ist zu
+pr&uuml;fen, dass der Pfad zum Interpreter in der ersten Zeile aktuell
+ist. Standardm&auml;ssig lautet dieser Pfad:
+</p>
+<pre><big><big>#!/usr/bin/awk -f</big></big></pre>
+<p>Abweichungen sind aber m&ouml;glich, insbesondere, wenn neue
+AWK-Versionen manuell kompiliert und installiert werden.
+</p>
+<p>Damit das Programm von jedem beliebigen Ort aufgerufen werden kann,
+tr&auml;gt man am besten einen entsprechenden Kurzbefehl (Alias) in die
+Konfigurationsdatei seiner Default-Shell ein. Bei der <span
+ style="font-style: italic;">Bash </span>heisst diese <span
+ style="font-style: italic;">.bashrc</span> und findet sich im
+pers&ouml;nlichen Verzeichnis<span style="font-style: italic;">
+/home/&lt;Benutzer&gt;</span>.
+</p>
+<p>Neue Kurzbefehle k&ouml;nnen einfach am Ende der Datei angef&uuml;gt
+werden. Beispiel:
+</p>
+<pre><big><big>alias jm='/home/adrian/fsbo/software/jahresmeisterschaft.awk'</big></big></pre>
+<p>In diesem Fall l&auml;ge die Programmdatei
+&laquo;jahresmeisterschaft.awk&raquo; im
+Verzeichnis<span style="font-style: italic;"> /home/adrian/fsbo/software</span>
+und k&ouml;nnte &uuml;ber den Kurzbefehl <span
+ style="font-style: italic;">jm</span>
+gestartet werden.
+</p>
+<p><span style="font-weight: bold;">Windows</span>
+</p>
+<p>Am besten speichert man die Programmdatei
+&laquo;jahresmeisterschaft.awk&raquo; in jenem
+Ordner, in dem man die Auswertung vornehmen m&ouml;chte.
+</p>
+<a name="2_3_start"></a>
+<h3>2.3&nbsp;&nbsp;Start des Programmes</h3>
+<p>Um das Programm zu starten, ist eine Konsole zu &ouml;ffnen und ins
+Verzeichnis zu navigieren, wo man die Auswertung machen m&ouml;chte:</p>
+<p><span style="font-weight: bold;">UNIX / Linux</span></p>
+<p>Konsole &uuml;ber den Menueintrag <span style="font-style: italic;">Terminal,
+xterm, New Window</span> o.&auml;. (je nach System und Konfiguration
+verschieden)
+&ouml;ffnen:</p>
+<table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+ colspan="1"><font color="#000000" size="3"><i><span
+ style="font-weight: bold;"></span>cd &lt;Arbeitsverzeichnis&gt;</i></font></td>
+    </tr>
+    <tr>
+      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+ colspan="1"><font color="#000000" size="3"><span
+ style="font-style: italic;">jm</span></font></td>
+    </tr>
+  </tbody>
+</table>
+<p><span style="font-weight: bold;">Mac OS X</span></p>
+<p><em>Programme -&gt; Dienstprogramme -&gt; Terminal</em></p>
+<table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+ colspan="1"><font color="#000000" size="3"><i><span
+ style="font-weight: bold;"></span>cd &lt;Arbeitsverzeichnis&gt;</i></font></td>
+    </tr>
+    <tr>
+      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+ colspan="1"><font color="#000000" size="3"><span
+ style="font-style: italic;">jm</span></font></td>
+    </tr>
+  </tbody>
+</table>
+<p>Falls ein anderer Kurzbefehl als <span style="font-style: italic;">jm
+</span>gew&auml;hlt wurde, ist nat&uuml;rlich jeweils dieser zu
+verwenden.</p>
+<p><span style="font-weight: bold;">Windows</span>
+</p>
+<p>Je nach installierter Umgebung entweder die git- oder die Cygwin-Konsole &ouml;ffnen:</p>
+<table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+ colspan="1"><font color="#000000" size="3"><i><span
+ style="font-weight: bold;"></span>cd &lt;Arbeitsordner&gt;</i></font></td>
+    </tr>
+    <tr>
+      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+ colspan="1"><font color="#000000" size="3"><span
+ style="font-style: italic;">awk -f jahresmeisterschaft.awk</span></font></td>
+    </tr>
+  </tbody>
+</table>
+<p><span style="font-weight: bold;">Fehlermeldungen</span>
+</p>
+<p>Folgende Fehlermeldungen sind m&ouml;glich:</p>
+<table style="text-align: left; width: 800px;" border="1"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="width: 15%; vertical-align: top;"><span
+ style="font-weight: bold;">Symptom</span></td>
+      <td style="width: 80%;">
+      <img alt="" src="error_bad_interpreter.png"
+ style="width: 604px; height: 24px;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">Ursache</span></td>
+      <td style="width: 80%;">Der Pfad zum Interpreter in der ersten
+Zeile von &laquo;jahresmeisterschaft.awk&raquo; stimmt nicht.</td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">L&ouml;sung</span></td>
+      <td style="width: 80%;">korrekten Pfad eintragen:<br>
+      <pre><big><big>#!/usr/bin/awk -f</big></big></pre>
+sollte meist funktionieren. Ansonsten Installationsverzeichnis
+ermitteln und dieses eintragen. Geht es immer noch nicht, das Programm &uuml;ber den expliziten Aufruf starten:<br />
+<pre><big><big>awk -f jahresmeisterschaft.awk</big></big></pre>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Klappt alles korrekt,
+zeigt einem der Prompt <span style="font-style: italic;">jahresmeisterschaft
+&gt;</span> an, dass
+man sich im Hauptprogramm befindet:</p>
+<p>&Uuml;ber den Befehl </p>
+<table border="1" cellpadding="1" height="28" width="600">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+ style="font-weight: bold;"></span>usage</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<p>erh&auml;lt man eine Liste
+der verschiedenen Befehlen und ihren
+Funktionen.</p>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="3_erfassen"></a>
+<h2>3&nbsp;&nbsp;Erfassen der Resultate</h2>
+<p>Zum Erfassen dient der Befehl </p>
+<table border="1" cellpadding="1" height="28" width="600">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+ style="font-weight: bold;"></span>erf</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<p>Danach beginnt die Erfassung mit dem Nach- und Vornamen des ersten
+zu
+erfassenden Sch&uuml;tzen. In welcher Reihenfolge die einzelnen
+Teilnehmer erfasst werden, spielt keine Rolle. Bevor die
+einzenen
+Resultate erfasst werden k&ouml;nnen, werden noch einige
+zus&auml;tzliche Angaben gem&auml;ss
+folgendem Schema verlangt.</p>
+<img src="schuetzendaten.png" height="239" width="511">
+<p>Die Erfassung der Resultate erfolgt in derselben Reihenfolge wie auf
+dem Formular im blauen B&uuml;chlein. Zudem muss f&uuml;r die
+sp&auml;tere Berechnung der Gutpunkte jeweils angegeben werden, ob ein
+Kranzresultat geschossen wurde (ja / nein), nat&uuml;rlich nur bei den
+Anl&auml;ssen, bei denen &uuml;berhaupt Kr&auml;nze geschossen werden
+k&ouml;nnen. Dies ist aus den jeweiligen Ranglisten
+ersichtlich:</p>
+<img src="kranzres.png" title="" alt=""
+ style="width: 660px; height: 100px;">
+<p>Beim Einzelwettschiessen ist
+zudem das Feld anzugeben, in welchem
+der betreffende Sch&uuml;tze eingeteilt ist, da das Schiessprogramm
+f&uuml;r jedes Feld unterschiedlich ist.
+</p>
+<p>Bei Schiessanl&auml;ssen,
+die der betreffende Teilnehmer nicht
+besucht hat, gibt man als Resultat 0 ein. Nach dem Erfassen des
+letzten Resultates, werden die Daten in die automatisch erzeugte
+Tabelle &laquo;teilnehmer.csv&raquo; geschrieben und den
+Benutzer
+erwartet die Frage nach dem weiteren Vorgehen.</p>
+<img src="weiteres_vorgehen.png" height="90" width="360">
+<hr style="width: 100%; height: 2px;" noshade="noshade"><a
+ name="4_kontrolle" id="4_kontrolle"></a>
+<h2 style="page-break-before:always";>4&nbsp;&nbsp;Kontrolle</h2>
+<p>Zur Kontrolle kann mit folgendem Befehl eine formatierte Liste jedes
+erfassten Teilnehmers erzeugt werden:
+</p>
+<table border="1" cellpadding="1" height="28" width="600">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i>kontr</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<p>Output:</p>
+<img src="kontrolle_output.png" height="234" width="513">
+<p>M&ouml;chte man diese Liste ausdrucken, so kann sie mit</p>
+<table border="1" cellpadding="1" height="28" width="600">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i>plo
+kontr</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<p>in die Datei &laquo;kontrolle.txt&raquo; geschrieben werden, von wo
+sie bequem
+&uuml;ber einen Editor ausgedruckt werden kann.</p>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="5_korrigieren" id="5_korrigieren"></a>
+<h2>5&nbsp;&nbsp;Korrigieren der Resultate</h2>
+<p>Das Korrekturprogramm wird vom
+Hauptprogramm mit folgendem Befehl
+gestartet:
+</p>
+<table border="1" cellpadding="1" height="28" width="600">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+ style="font-weight: bold;"></span>korr</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<p>Es erscheint eine Liste der bisher erfassten Teilnehmer:</p>
+<img src="erfasste_teilnehmer.png" height="129" width="474">
+<p>Hier ist der Name des Teilnehmers einzugeben, von dem ein Resultat
+korrigiert werden soll. Anschliessend muss das entsprechende
+Schiessen ausgew&auml;hlt werden.</p>
+<img src="auswahl_korr.png" height="235" width="333">
+<p>Nun kann das korrekte Resultat erfasst werden.</p>
+<img src="res_korr.png" height="136" width="296">
+<p>Zum Schluss wird man gefragt, ob noch weitere Resultate korrigiert
+werden sollen, falls nein, kommt man automatisch ins Hauptprogramm
+zur&uuml;ck.</p>
+<br>
+<hr style="width: 100%; height: 2px;" noshade="noshade"><a name="6_ausw"
+ id="6_ausw"></a>
+<h2>6&nbsp;&nbsp;Auswerten</h2>
+<p>Ist alles in Ordnung kann man
+&uuml;ber den Befehl</p>
+<table border="1" cellpadding="1" height="28" width="600">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i>calc
+rang</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<p>von jedem Teilnehmer das Gesamtresultat ermitteln lassen. Je
+nach definierter Kategorie (A / B) werden dabei nebst den
+Pflichtresultaten die besten 6 bzw. 4 Resultate ber&uuml;cksichtigt.
+Dabei wird eine neue Tabelle namens &laquo;auswertung.csv&raquo; 
+erstellt, welche zahlreiche zus&auml;tzliche Felder enth&auml;lt, in
+denen nebst dem Gesamtresultat auch die Gutpunkte gespeichert werden
+und die Information, ob der Sch&uuml;tze die Teilnahmekriterien
+&uuml;berhaupt erf&uuml;llt.
+</p>
+<p>Damit die nachfolgende Verarbeitung fehlerfrei erfolgen kann, ist sicherzustellen, dass die Datei &laquo;auswertung.csv&raquo;mit 8 bit codiert ist (ANSI) und ansonsten eine Konvertierung vorzunehmen (z.B. mit Notepad++ oder VIM).</p>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="6_rangliste"></a>
+<h2>7&nbsp;&nbsp;Generieren der Rangliste</h2>
+<p>Die Rangliste wird &uuml;ber ein spezielles Modul automatisch im
+gewohnten Look &amp; Feel
+erzeugt. Da sie im offenen Standard XHTML formatiert ist, kann sie mit einem beliebigen Web-Browser ge&ouml;ffnet und gedruckt werden. Die Schriftdefinition mittels CSS sorgt daf&uuml;r, dass die Liste auf allen Browsern ungef&auml;hr gleich aussieht. Der Aufruf des Programmes geschieht
+&uuml;ber den Befehl</p>
+<table border="1" cellpadding="1" height="28" width="600">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+ style="font-weight: bold;"></span>plo rangh</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<p>Als zus&auml;tzliche
+Informationen werden das Jahr der
+Meisterschaft, die Anzahl Sch&uuml;tzen in der Kategorie A, sowie
+das Arbeitsverzeichnis und der Name der zu
+erstellenden Rangliste ben&ouml;tigt.</p>
+<img src="start_plo-rang.png" height="59" width="450">
+<p>Im Anschluss wird
+gepr&uuml;ft, ob die Auswertung schon durchgef&uuml;hrt wurde. Falls
+nicht, wird dies angemeckert.</p>
+<img src="abbruch_plo-rang.png" height="105" width="460">
+<p>Nach vollbrachter Tat kann das Ergebnis mit einem Web-Browser
+bewundert werden.</p>
+<img src="rangliste_res.png" height="387" width="852">
+<p> Folgendes muss nun noch kontrolliert und ggf. manuell in einem
+HTML-Editor angepasst werden:
+</p>
+<ul>
+  <li>Sch&uuml;tzen, welche die Minimalanforderungen nicht
+erf&uuml;llen (Pflichtresultate fehlen und/oder zuwenig Resultate)
+werden ebenfalls aufgef&uuml;hrt, aber reglementsgem&auml;ss ohne
+Rangierung und Gutpunkte. Die Zeile &laquo;Beteiligung xy
+Sch&uuml;tzen&raquo; im
+Titel muss entsprechend angepasst werden. Als Teilnehmer gilt nur, wer
+die Bedingungen erf&uuml;llt!<br>
+Ursache: Die Titelinformationen werden anhand der erfassten Teilnehmer
+gesetzt, ehe die Daten f&uuml;r die Rangliste ausgewertet werden und
+gepr&uuml;ft wird, ob die Teilnahmekriterien erf&uuml;llt sind.<br>
+  </li>
+  <li>S&auml;mtliche erfassten Sch&uuml;tzen erscheinen auch in der
+Rangliste, ggf. mit dem Vermerk &laquo;zuwenig Resultate&raquo;. Je
+nachdem kann
+die Rangliste so sehr lang werden und sehr viele Teilnehmer mit zuwenig
+Resultaten enthalten. In der Kategorie B sollten diejenigen, welche
+schon im Vorjahr zuwenig Resultate hatten, manuell entfernt werden.<br>
+  </li>
+</ul>
+<p>Alternativ besteht die M&ouml;glichkeit, die Rangliste im Zwischenformat PDC abzuleiten, welches danach in ein PDF &uuml;berf&uuml;hrt werden kann. Dies geschieht mit folgendem Befehl:</p>
+<table border="1" cellpadding="1" height="28" width="600">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+ style="font-weight: bold;"></span>plo rangp</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<p>F&uuml;r die Konvertierung wird das eigenst&auml;ndige Programm &laquo;pdc2pdf.awk&raquo; ben&ouml;tigt, welches am besten ebenfalls &uuml;ber einen Kurzbefehl zug&auml;nglich gemacht wird (analog Jahresmeisterschaftsprogramm). Der Aufruf erfolgt dann wie folgt:</p>
+<table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+ style="font-weight: bold;"></span>exit</i></font></td>
+    </tr>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+ colspan="1"><font color="#000000" size="3"><i><span
+ style="font-weight: bold;"></span>pdc2pdf rangliste_&lt;Jahr&gt;.pdc</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="7_wertpte"></a>
+<h2>8&nbsp;&nbsp;Generieren der Wertpunktetabelle</h2>
+<a name="nf_wert"></a>
+<h3>8.1&nbsp;&nbsp;Nachf&uuml;hren der Wertpunkteinformationen</h3>
+<p>Die Wertpunkte werden im File
+&laquo;wertpunkte_&lt;jahr&gt;.csv&raquo; gehalten, welches 2 Felder
+umfasst: <em>schuetze</em> und <em>&lt;jahr&gt;</em>. Bei der
+Auswertung muss jeweils das File des Vorjahres angegeben werden und
+infolge der Auswertung wird dann eine neue Tabelle f&uuml;r das
+aktuelle Jahr erstellt, welches im n&auml;chsten Jahr f&uuml;r die
+Auswertung beigezogen wird.</p>
+<p>Teilnehmer, die im laufenden Jahr zum ersten Mal an der Jahresmeisterschaft
+teilnehmen, m&uuml;ssen vorg&auml;ngig manuell an der richtigen Stelle
+eingef&uuml;gt und mit 0 initialisiert werden.</p>
+<img src="wertpunkte_neu_teiln.png" height="192" width="328">
+<p>Damit die Berechung durchgef&uuml;hrt werden kann, muss die
+Auswertung erfolgt sein, d.h. <em>calc rang</em> muss durchgelaufen
+sein. Die Aktualisierung der Wertpunktetabelle erfolgt anschliessend
+&uuml;ber dieses Kommando:</p>
+<table border="1" cellpadding="1" height="28" width="600">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i>calc
+wert</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<a name="abl_wert"></a>
+<h3>8.2&nbsp;&nbsp;Ableiten der grafischen Wertpunktetabelle</h3>
+<p>Zum Erzeugen einer grafisch ansprechenden Tabelle im Format XHTML
+dient folgender Befehl: </p>
+<table border="1" cellpadding="1" height="28" width="600">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i>plo
+werth</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<p>Hierzu muss das aktuelle Jahr und die zuvor bearbeitete
+Wertpunktetabelle des Vorjahres angegeben werden:</p>
+<img src="start_plo-wert.png" height="66" width="500">
+<p>Auch hier kann alternativ eine PDC-Datei erzeugt werden:</p>
+<table border="1" cellpadding="1" height="28" width="600">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i>plo
+wertp</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<p>Allf&auml;llige Korrekturen m&uuml;ssen dann in dieser Datei vorgenommen werden, wozu ein normaler Editor ausreicht. Achtung: Bei bezogenen Punkten sind zwingend auch die Totale anzupassen!</p>
+<p>Die Konvertierung funktioniert nach dem gleichen Prinzip wie bei der Rangliste:</p>
+<table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+ style="font-weight: bold;"></span>exit</i></font></td>
+    </tr>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+ colspan="1"><font color="#000000" size="3"><i><span
+ style="font-weight: bold;"></span>pdc2pdf wertpunkte_&lt;Jahr&gt;.pdc</i></font></td>
+    </tr>
+  </tbody>
+</table>
+</p>
+<hr style="width: 100%; height: 2px;" noshade="noshade"><a
+ name="wanderpr"></a>
+<h2>9&nbsp;&nbsp;Erstellen der Wanderpreistabelle</h2>
+<h3>Gem&auml;ss Vorstandsbeschluss vom 3. Januar 2017 werden bis auf weiteres keine Wanderpreise mehr abgegeben.</h3>
+<p>Die Wanderpreistabelle muss z.Z. manuell erstellt werden. Dazu
+kopiert man die Vorlagendatei &laquo;wanderpreise_vorlage.html&raquo;
+ins
+Arbeitsverzeichnis und &auml;ndert die entsprechenden Parameter mit
+einem HTML-Editor.</p>
+<p>Folgende Informationen sind zu erfassen:</p>
+<p><span style="font-weight: bold;">1. Jahresmeisterschaft Kat. A</span><br>
+gem&auml;ss Rangliste Jahresmeisterschaft</p>
+<p><span style="font-weight: bold;">2. Jahresmeisterschaft Kat. B</span><br>
+gem&auml;ss Rangliste Jahresmeisterschaft</p>
+<p><span style="font-weight: bold;">3. Feldschiessen und
+Obligatorisches Programm</span><br>
+Die ben&ouml;tigte Information kann mit folgendem Befehl ermittelt
+werden:</p>
+<table border="1" cellpadding="1" height="28" width="600">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i>calc
+opfs</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<p>Es erscheint darauf eine Liste aller erfassten Sch&uuml;tzen mit
+ihren Resultaten des OP und FS sowie dem Total der beiden Schiessen. </p>
+<img alt="" src="total_opfs.png" style="width: 369px; height: 146px;"><br>
+<p>Derjenige mit dem h&ouml;chsten Total wird anschliessend in die
+Wanderpreistabelle &uuml;bertragen.</p>
+<p><span style="font-weight: bold;">4. Rangh&ouml;chster Veteran
+Obligatorisches Programm</span><br>
+ist anhand der Rangliste OP ersichtlich</p>
+<p><span style="font-weight: bold;">5. Rangh&ouml;chster Veteran
+Feldschiessen</span><br>
+ist anhand der Rangliste Feldschiessen ersichtlich</p>
+<p><span style="font-weight: bold;">6. Pr&auml;sidentenstabelle</span><br>
+immer der/die aktuelle Vereinspr&auml;sident(in)</p>
+<hr style="width: 100%; height: 2px;" noshade="noshade"><a name="faq"></a>
+<h2>10&nbsp;&nbsp;FAQ</h2>
+<p><span style="font-weight: bold;">Wie kann ich aus
+dem
+Programm auf
+das Betriebssystem zugreifen ?</span>
+</p>
+<p>Jeder Befehl, der nicht Teil des Befehlsumfangs des
+Jahresmeisterschaftsprogrammes ist, wird automatisch an das
+Betriebssystem weitergeleitet. Dies wird mit der Ausgabe <span
+ style="font-family: monospace;">...submitting command to operating
+system...</span> kenntlich gemacht. Beispiel:</p>
+<img alt="" src="sys_befehl.png" style="width: 603px; height: 259px;"><br>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<br>
+<a name="probleme_todo"></a>
+<h2>11&nbsp;&nbsp;Dokumentierte Probleme und
+ToDo List</h2>
+<a name="probleme"></a>
+<h3>11.1&nbsp;&nbsp;Dokumentierte Probleme</h3>
+<table style="text-align: left; width: 800px;" border="1"
+ cellpadding="2" cellspacing="2" width="95%">
+  <tbody>
+    <tr>
+      <td style="width: 15%; vertical-align: top;" width="20%"><span
+ style="font-weight: bold;">Symptom</span></td>
+      <td style="width: 80%;" width="75%">Kommandos mit plo werden
+teilweise nicht erkannt</td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">Ursache</span></td>
+      <td style="width: 80%;">unklar</td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">L&ouml;sung</span></td>
+      <td style="width: 80%;">Implementierung der Kommandos evtl.
+gernerell anders l&ouml;sen. Wird allerdings seit 2017 nicht mehr beobachtet.</td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<table style="text-align: left; width: 800px;" border="1"
+ cellpadding="2" cellspacing="2" width="95%">
+  <tbody>
+    <tr>
+      <td style="width: 15%; vertical-align: top;" width="20%"><span
+ style="font-weight: bold;">Symptom</span></td>
+      <td style="width: 80%;" width="75%">Sch&uuml;tzen mit Umlauten im Namen werden beim Berechnen der Wertpunktetabelle nicht ber&uuml;cksichtigt</td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">Ursache</span></td>
+      <td style="width: 80%;">Codierung der Umlaute sorgt leider immer wieder f&uuml;r Probleme</td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">L&ouml;sung</span></td>
+      <td style="width: 80%;">evtl. eines zus&auml;tzliches Feld ohne Umlaute f&uuml;hren, um solche Vergleiche eindeutig durchf&uuml;hren zu k&ouml;nnen.</td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<table style="text-align: left; width: 800px;" border="1"
+ cellpadding="2" cellspacing="2" width="95%">
+  <tbody>
+    <tr>
+      <td style="width: 15%; vertical-align: top;" width="20%"><span
+ style="font-weight: bold;">Symptom</span></td>
+      <td style="width: 80%;" width="75%">Auf der Rangliste ist die
+Zahl der Teilnehmer zu hoch</td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">Ursache</span></td>
+      <td style="width: 80%;">Z&auml;hlervariable durchl&auml;uft
+vermutlich die Schleife einmal zu viel oder ist falsch initialisiert</td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">L&ouml;sung</span></td>
+      <td style="width: 80%;">Korrekte Anzahl Teilnehmer ermitteln,
+auch unter Ber&uuml;cksichtigung ob erf&uuml;llt oder nicht.</td>
+    </tr>
+  </tbody>
+</table>
+<a name="todo"></a>
+<h3>11.2&nbsp;&nbsp;ToDo List</h3>
+<table style="text-align: left; width: 800px;" border="1"
+ cellpadding="2" cellspacing="2" width="95%">
+  <tbody>
+    <tr>
+      <td style="width: 15%; vertical-align: top;" width="20%"><span
+ style="font-weight: bold;">ist</span></td>
+      <td style="width: 80%;" width="75%">Teilnehmer, die im aktuellen
+Jahr zum ersten Mal an der Jahresmeisterschaft teilnehmen und bislang
+in der Wertpunktetabelle noch nicht erscheinen, werden dort nicht
+automatisch integriert.</td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">soll</span></td>
+      <td style="width: 80%;">automatischer Abgleich mit der
+Wertpunktetabelle</td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">Workaround</span></td>
+      <td style="width: 80%;">Teilnehmer manuell an der alphabetisch
+richtigen Stelle in der Wertpunktetabelle einf&uuml;gen und den
+Punktestand mit &laquo;0&raquo; initialisieren.</td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<table style="text-align: left; width: 800px;" border="1"
+ cellpadding="2" cellspacing="2" width="95%">
+  <tbody>
+    <tr>
+      <td style="width: 15%; vertical-align: top;" width="20%"><span
+ style="font-weight: bold;">ist</span></td>
+      <td style="width: 80%;" width="75%">Teilnehmer, die im laufenden
+Jahr ihre Punkte (oder einen Teil davon) bezogen haben, werden bei der
+automatischen Berechnung nicht ber&uuml;cksichtigt.</td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">soll</span></td>
+      <td style="width: 80%;">M&ouml;glichkeit, dies in sinnvoller Form
+&uuml;ber das Programm zu erledigen</td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">Workaround</span></td>
+      <td style="width: 80%;">Punktestand des entsprechenden
+Teilnehmers manuell in der Wertpunktetabelle anpassen, ebenso in der
+grafischen Tabelle und dort die Summen entsprechend korrigieren.</td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<table style="text-align: left; width: 800px;" border="1"
+ cellpadding="2" cellspacing="2" width="95%">
+  <tbody>
+    <tr>
+      <td style="width: 15%; vertical-align: top;" width="20%"><span
+ style="font-weight: bold;">ist</span></td>
+      <td style="width: 80%;" width="75%">Im Kontrollfile "kontr.txt" ist nicht ersichtlich, ob ein Kranz geschossen wurde.</td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">soll</span></td>
+      <td style="width: 80%;">Dieses File sollte auch zur Kontrolle der Kranzresultate verwendet werden k&ouml;nnen.</td>
+    </tr>
+    <tr>
+      <td style="width: 15%;"><span style="font-weight: bold;">Workaround</span></td>
+      <td style="width: 80%;">Zus&auml;tzliche Spalte einf&uuml;gen und z.B. mit einem X kennzeichnen, wo ein Kranzresultat erreicht wurde.</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="schiessb"></a>
+<h2>12&nbsp;&nbsp;Standbl&auml;tter und Schiessb&uuml;chlein</h2>
+<a name="standblatt"></a>
+<h3>12.1&nbsp;&nbsp;Standbl&auml;tter erzeugen
+</h3>
+<p>Um Standbl&auml;tter zu produzieren, steht ein eigenes Modul des
+Jahresmeisterschaftsprogrammes zur Verf&uuml;gung.
+Dies ben&ouml;tigt nur einige grunds&auml;tzliche Parameter und
+erzeugt anschliessend 4 identische Standbl&auml;tter
+auf ein A4-grosses Dokument im PDF-Format.</p>
+<p>Der Vorgang wird mit dem Befehl</p>
+<table border="1" cellpadding="1" height="28" width="600">
+  <tbody>
+    <tr align="left" bgcolor="#ccffff" valign="top">
+      <td colspan="2" height="14"><font color="#000000" size="3"><i>plo
+st</i></font></td>
+    </tr>
+  </tbody>
+</table>
+<p>ausgel&ouml;st. Nachdem man das gew&uuml;nschte Jahr eingegeben hat,
+erscheint eine Liste mit den vordefinierten Stichen der
+Jahresmeisterschaft und des Endschiessens,
+aus der man sich den gew&uuml;nschten ausw&auml;hlt. Zudem besteht die
+M&ouml;glichkeit, benutzerdefinierte Stiche zu definieren. In diesem
+Fall m&uuml;ssen dann alle Parameter manuell eingegeben werden.</p>
+<p><span style="background-color: rgb(255, 255, 0);">Achtung: Falls
+Umlaute ben&ouml;tigt werden, m&uuml;ssen diese &uuml;ber ihren
+Oktalwert eingegeben werden.</span></p>
+<p>Diese Werte lauten:</p>
+<ul>
+  <li>&Auml;: \304</li>
+  <li>&auml;: \344</li>
+  <li>&Ouml;: \326</li>
+  <li>&ouml;: \366</li>
+  <li>&Uuml;: \334</li>
+  <li>&uuml;: \374</li>
+</ul>
+<pre>Bsp: Jubil\344umsstich</pre>
+<p>F&uuml;r weitere Sonderzeichen siehe <a
+ href="http://www.fiveanddime.net/HTMLescapeCodes.html">http://www.fiveanddime.net/HTMLescapeCodes.html</a>
+(Achtung: Codes im Dezimalsystem!)</p>
+<p>Das Programm erzeugt anschliessend direkt ein Dokument mit dem
+passenden Dateinamen im PDF-Format, welches &uuml;ber einen PDF-Reader
+(z.B. Adobe Reader) ge&ouml;ffnet und gedruckt werden kann. Dies
+m&uuml;sste
+etwa so aussehen:</p>
+<p><img src="vier_standblaetter.png" height="474" width="693"></p>
+<p>Jetzt braucht&#8217;s nur noch verschieden farbiges Papier. Folgende Farben haben sich bew&auml;hrt:</p>
+<ul>
+  <li>Vor&uuml;ben Feldschiessen: hellgr&uuml;n</li>
+  <li>Sektion: hellblau</li>
+  <li>Standstich: magenta</li>
+  <li>Schnellstich: grau</li>
+  <li>Kunststich: gelb</li>
+</ul>
+<p>Diese Farbgebung ist aber nicht in Stein gemeisselt, jedoch sind
+h&auml;ufige Wechsel zu vermeiden.</p>
+<p>Beim Drucken muss beachtet werden, dass das Dokument in
+Originalgr&ouml;sse ausgegeben wird (skalieren deaktivieren).</p>
+<a name="karte_drucken"></a>
+<h3>12.2&nbsp;&nbsp;Jahresmeisterschaftskarte drucken
+</h3>
+<p>Die Jahresmeisterschaftskarte existiert als PDF und braucht
+normalerweise nicht ge&auml;ndert zu werden. Zum Drucken ist wie folgt
+vorzugehen:</p>
+<p>Im Adobe Reader die erste Seite des Formulars &ouml;ffnen und im
+Gegenuhrzeigersinn drehen.</p>
+<img style="width: 215px; height: 22px;" alt=""
+ src="form_drehen_guz.gif">
+<p>Danach den Druckdialog starten.
+Folgende Einstellungen sind zu
+t&auml;tigen:</p>
+<ul>
+  <li>Papierformat A4 Portrait
+einstellen</li>
+  <li>s&auml;mtliche
+Einstellungen betreffend skalieren etc. deaktivieren</li>
+  <li>Die Option
+zentrieren deaktivieren.</li>
+</ul>
+<p>Anschliessend die bedruckte Seite wie folgt wieder in den
+Papierschacht legen (gilt f&uuml;r den Brother HL-2040, kann bei
+anderen Modellen ggf. abweichen):<br>
+<img alt="" src="form_drucken_papier.gif"
+ style="width: 202px; height: 293px;"><br>
+</p>
+<p>Danach im Adobe Reader die zweite Seite &ouml;ffnen. Diese darf
+nicht gedreht werden und muss mit denselben Optionen wie die erste
+Seite gedruckt werden.
+</p>
+<p>Die R&uuml;ckseite enth&auml;lt eine &Uuml;bersicht der Stiche, die
+f&uuml;r die Jahresmeisterschaft z&auml;hlen, sowie den bewilligten
+Zuschl&auml;gen f&uuml;r Jungsch&uuml;tzen. Anhand der Randlinie kann
+das Formular anschliessen zugeschnitten werden.<br>
+</p>
+<h3><a name="stichuebersicht"></a>12.3&nbsp;&nbsp;&Uuml;bersicht &uuml;ber die geschossenen
+Stiche generieren</h3>
+<p>Zusammen mit den Standbl&auml;ttern wird jedem Teilnehmer eine
+kleine &Uuml;bersicht ausgeh&auml;ndigt, welche Stiche mit welchen
+Resultaten er geschossen hat, und welchen Prozentwerten dies
+entspricht. Ebenso ist das Total ersichtlich.</p>
+<p>Diese Textdatei wird beim Durchf&uuml;hren der Funktion <em>calc
+rang</em> erzeugt und heisst &laquo;uebersicht.txt&raquo;.</p>
+<img alt="" src="uebersicht_resultate.png"
+ style="width: 404px; height: 360px;">
+<p>Dieses File wird anschliessend gedruckt, wobei darauf zu achten ist,
+dass die Tabelle nicht zu gross wird und auf einer Seite im
+Schiessb&uuml;chlein Platz hat (Abmessungen 21 &times; 8 cm).
+Bew&auml;hrt
+hat sich folgendes Vorgehen:</p>
+<ul>
+  <li>Textdokument in OpenOffice laden</li>
+  <li>Die Schriftart &laquo;Courier 10 Pitch&raquo; und die
+Schriftgr&ouml;sse &laquo;8&raquo;
+einstellen</li>
+  <li>pro A4-Seite haben dann 3 Tabellen Platz; bei den
+Seitenumbr&uuml;chen entsprechend anpassen</li>
+</ul>
+<p>Nach dem Drucken m&uuml;ssen die Tabellen noch passend zugeschnitten
+werden.</p>
+<hr noshade="noshade">
+<p><a name="glossar"></a></p>
+<h2>13&nbsp;&nbsp;Glossar</h2>
+<p><span style="font-weight: bold;">AWK</span><br>
+AWK ist eine vollwertige Programmiersprache mit sehr geringem Umfang (ca. 45 Seiten Spezifikation und ca. 400 kB Dateigr&ouml;sse) und einem Minimum an Funktionen, deren Zweck die Bearbeitung strukturierter Textdateien ist. Die erste Version wurde 1977 von den Programmautoren <strong>A</strong>ho, <strong>W</strong>einberger und <strong>K</strong>ernighan entwickelt, die den Namen der Sprache aus ihren Initialen bildeten. Seitdem wurde die Sprache in verschiedensten Versionen und unter unterschiedlichen Namen weiterentwickelt. Zumindest eine dieser Versionen ist heute auf nahezu allen UNIX/Linux-Systemen zu finden. Die Open Source-Version <em>Gawk</em> l&auml;sst sich dar&uuml;ber hinaus auch auf beliebigen weiteren Systemen installieren.</p>
+<p><span style="font-weight: bold;">CSS</span><br>
+CSS steht f&uuml;r <span style="font-style: italic;">Cascading Style Sheets</span>. Es ist eine Sprache, die der Obhut des W3C (<span style="font-style: italic;">World Wide Web Consortium</span>; Vereinigung welche die Sprachen des Web definiert) obliegt und dazu dient, XML- und HTML-Dokumente einheitlich zu formatieren. Auf die Verwendung von CSS zu verzichten, f&uuml;hrt z.B. dazu, dass HTML-Seiten, je nach Browsereinstellung ganz verschieden dargestellt werden k&ouml;nnen. Mittels CSS k&ouml;nnen dagegen Schriftfont, -gr&ouml;sse, -farbe und vieles mehr explizit definiert werden. Die aktuelle CSS-Version ist 2.1, CSS3 befindet sich seit 2000 in der Entwicklung, wird aber erst in Teilen durch das W3C empfohlen.</p>
+<p><span style="font-weight: bold;">Open Source</span><br>
+Die Philosophie von Open Source ist die, dass Software sozusagen ein &ouml;ffentliches Eigentum darstellt, an dem sich niemand bereichern soll. Solche Software ist somit frei zug&auml;nglich und steht jedermann zur Verf&uuml;gung, ohne dass kommerzielle Zw&auml;nge dahinterstecken. Wer des Programmierens m&auml;chtig ist, hat dar&uuml;ber hinaus die M&ouml;glichkeit, derartige Software weiter zu entwickeln. Auf Open Source basieren z.B. das Betriebssystem <span
+ style="font-style: italic;">Linux</span>, der Browser <span
+ style="font-style: italic;">Mozilla</span>, die Programmiersprache <span
+ style="font-style: italic;">Gawk</span> und der Webserver <span
+ style="font-style: italic;">Apache</span>. Open Source-Programme sind h&auml;ufig in C geschrieben. Sie sind oft genauso gut oder sogar besser als kommerzielle Software, f&uuml;r die man unter Umst&auml;nden sehr viel Geld ausgeben muss. Da der Code von jedermann eingesehen werden kann, ist solche Software zudem sehr sicher, denn es ist so gut wie unm&ouml;glich, unbemerkt Viren einzubauen.
+</p>
+<p><span style="font-weight: bold;">PDF</span><br>
+Das <span style="font-style: italic;">Portable Document Format</span>
+(PDF) ist ein plattform&uuml;bergreifendes Dateiformat f&uuml;r druckbare Dokumente, das von der Firma Adobe Systems entwickelt und 1993 mit Adobe 1 ver&ouml;ffentlicht wurde. PDF ist ein universelles Dateiformat, das alle Schriften, Formatierungen, Farben und Grafiken jedes Ausgangsdokuments beibeh&auml;lt, unabh&auml;ngig von der Anwendung und der Plattform, die zur Erstellung verwendet wurden. Zum Betrachten der Datei ben&ouml;tigt man einen PDF-Betrachter, z.B. <a href="http://de.wikipedia.org/wiki/Xpdf">Xpdf</a>,
+<a href="http://de.wikipedia.org/wiki/Ghostview">Ghostview</a> oder den weit verbreiteten <a href="http://de.wikipedia.org/wiki/Adobe_Reader">Adobe Acrobat Reader</a>.
+Seit dem 1. Juni 2008 ist PDF ein ISO-Standard.</p>
+<p><span style="font-weight: bold;">XHTML</span><br>
+XHTML ist eine Weiterentwicklung der Auszeichnungssprache HTML (<span style="font-style: italic;">Hypertext Markup Language</span>). Mittels HTML wird das Aussehen von Webseiten beschrieben. XHTML ist ein Schema f&uuml;r XML, daher ist jedes XHTML-Dokument gleichzeitig ein XML-Dokument. Es muss also ein wohlgeformtes Dokument sein, das zus&auml;tzlich auch noch den Regeln eines XHTML-Schemas folgt.</p>
+<hr style="width: 100%; height: 2px;" noshade="noshade"><a name="anhang"></a>
+<h2 style="page-break-before:always";>14&nbsp;&nbsp;Anhang</h2>
+<a name="bef_ueb"></a>
+<h3>14.1&nbsp;&nbsp;Befehls&uuml;bersicht</h3>
+<table style="width: 800px; text-align: left;" border="0"
+ cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="width: 20%; vertical-align: top;"><span
+ style="font-family: monospace;">calc opfs</span></td>
+      <td style="vertical-align: top;">Berechnet das Total aus OP und FS</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span
+ style="font-family: monospace;">calc rang </span></td>
+      <td style="vertical-align: top;">Berechnet die Daten f&uuml;r die
+Rangliste</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span
+ style="font-family: monospace;">calc wert </span></td>
+      <td style="vertical-align: top;">Aktualisiert die
+Wertpunktetabelle</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span
+ style="font-family: monospace;">erf </span></td>
+      <td style="vertical-align: top;">Startet das Erfassungsprogramm.
+Damit werden die Resultate aller Teilnehmer erfasst und in der Tabelle
+&laquo;teilnehmer.csv&raquo; abgelegt. Die Daten werden immer
+automatisch gespeichert.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span
+ style="font-family: monospace;">exit </span></td>
+      <td style="vertical-align: top;">Beendet das Programm</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span
+ style="font-family: monospace;">kontr </span></td>
+      <td style="vertical-align: top;">Listet die Resultate aller
+Teilnehmer zwecks Kontrolle auf</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span
+ style="font-family: monospace;">korr<span> </span></span></td>
+      <td style="vertical-align: top;">Startet das Korrekturprogramm.
+Damit k&ouml;nnen falsch eingegebene Daten berichtigt werden. Die Daten
+werden automatisch gespeichert.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span
+ style="font-family: monospace;">plo kontr </span></td>
+      <td style="vertical-align: top;">Listet die Resultate aller
+Teilnehmer zwecks Kontrolle auf und schreibt sie in das Textfile
+&laquo;kontrolle.txt&raquo;</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span
+ style="font-family: monospace;">plo st </span></td>
+      <td style="vertical-align: top;">Erzeugt eine A4-Seite mit
+Standbl&auml;ttern im PDF-Format</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span
+ style="font-family: monospace;">plo rangh </span></td>
+      <td style="vertical-align: top;">Erzeugt die Rangliste im XHTML
+1.0-Format.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span
+ style="font-family: monospace;">plo rangp </span></td>
+      <td style="vertical-align: top;">Erzeugt die Rangliste im PDC Zwischenformat</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span
+ style="font-family: monospace;">plo werth </span></td>
+      <td style="vertical-align: top;">Erzeugt die Wertpunktetabelle im XHTML 1.0 - Format</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span style="font-family: monospace;">plo wertp </span></td>
+      <td style="vertical-align: top;">Erzeugt die Wertpunktetabelle im PDC Zwischenformat</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span style="font-family: monospace;">usage</span></td>
+      <td style="vertical-align: top;">Zeigt diese Befehls&uuml;bersicht</td>
+    </tr>
+  </tbody>
+</table>
+<a name="abm_form"></a>
+<h3>14.2&nbsp;&nbsp;Abmessungen Formulare</h3>
+<h3>Abmessungen HTML-Formulare (alle Angaben in px)</h3>
+<p>Rangliste:</p>
+<img src="rangl_abmessungen.png" title="" alt=""
+ style="width: 660px; height: 298px;"><br>
+<p>Wertpunkte:</p>
+<img src="wertpte_abmessungen.png" title="" alt=""
+ style="width: 660px; height: 301px;">
+<p>Folgende
+Schriftgr&ouml;ssen werden verwendet (Font:
+Helvetica,sans-serif)
+</p>
+<ul>
+  <li>h1 (Titel) : font-size:26px</li>
+  <li>p, td (sonstiger Text) :
+font-size:18px</li>
+</ul>
+<h3>Abmessungen PDF-Formulare (alle Angaben in mm)</h3>
+<p>Rangliste:</p>
+<img src="abmessungen_rangliste_mm.png" title="" alt=""
+ style="width: 602px; height: 859px;"><br>
+<p>Wertpunkte:</p>
+<img src="abmessungen_wertpunktetabelle_mm.png" title="" alt=""
+ style="width: 602px; height: 859px;">
+<a name="testfaelle"></a>
+<h3>14.3&nbsp;&nbsp;Testf&auml;lle</h3>
+<p>Um das korrekte Funktionieren der Applikation sicherzustellen, sind <a target="_blank", href="../testfaelle/index.html">hier</a> diverse Testf&auml;lle beschrieben, welche sinnvollerweise nach gr&ouml;sseren Modifikationen durchgef&uuml;hrt werden.</p>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<div id="Fussnote"><em>A Mozilla 1.7/Bluefish 1.0.7-Production, Adrian B&ouml;hlen</em></div>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+</body>
+</html>

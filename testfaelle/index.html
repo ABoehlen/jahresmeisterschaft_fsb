@@ -1,0 +1,483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  <title>Testf&auml;lle Jahresmeisterschaftsprogramm</title>
+  <link rel="stylesheet" type="text/css" href="../dok/schriftdef.css">
+  <!-- Drucken: In Datei drucken, Skalierung 68%, Skalierung ignorieren deaktivieren, Hintergrundfarben drucken aktivieren -->
+</head>
+<body>
+<img src="logo.png" height="153" width="179">
+<h1>Testf&auml;lle Jahresmeisterschaftsprogramm</h1>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<table style="width: 90%; text-align: left;" border="0" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; width: 20%; font-weight: bold;">Summary:</td>
+      <td style="vertical-align: top; width: 80%;" bgcolor="#ffff00">Testf&auml;lle f&uuml;r das Jahresmeisterschaftsprogramm</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; width: 20%;">Verfasser:&nbsp;<br>
+      </td>
+      <td style="vertical-align: top; width: 80%;">Adrian
+B&ouml;hlen</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; width: 20%;">Datum:</td>
+      <td style="vertical-align: top; width: 80%;">1. April 2021</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; width: 20%;">Version:</td>
+      <td style="vertical-align: top; width: 80%;">1.0</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; width: 20%;">Status: </td>
+      <td style="vertical-align: top; width: 80%;">final</td>
+    </tr>
+  </tbody>
+</table>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<h3>Inhalt:</h3>
+<ul>
+  <li><a href="#voraussetzungen">Hinweise und Voraussetzungen</a></li>
+  <li><a href="#neuerfassen1">Teilnehmer neu erfassen 1</a></li>
+  <li><a href="#neuerfassen2">Teilnehmer neu erfassen 2</a></li>
+  <li><a href="#korrigieren">Daten eines Teilnehmers korrigieren</a></li>
+  <li><a href="#erf_korr">Daten erfassen und korrigieren</a></li>
+  <li><a href="#ausw">Daten auswerten</a></li>
+  <li><a href="#rangl">Rangliste erstellen</a></li>
+  <li><a href="#nf_wert">Wertpunkte nachf&uuml;hren</a></li>
+  <li><a href="#wertpunktestand">&Uuml;bersicht Wertpunkte erstellen</a></li>
+  </ul>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="voraussetzungen"></a>
+<h2>Hinweise und Voraussetzungen</h2>
+<ul>
+  <li>In farbige K&auml;sten geschriebene Kommandos sind genau so in der Konsole einzugeben. Grau bedeutet normale Shell, hellblau bedeutet Jahresmeisterschaftsprogramm (erkennbar am Prompt <em>jahresmeisterschaft ></em>)</li>
+  <li>Einzugebende Parameter sind in eckige Klammern gefasst &lang;&rang;, die nicht mit einzugeben sind.</li>
+  <li>Die Testf&auml;lle m&uuml;ssen im entsprechenden Source-Verzeichnis ausgef&uuml;hrt werden.</li>
+  <li>Durch Testf&auml;lle angelegte zus&auml;tzliche Dateien sind anschliessend wieder zu l&ouml;schen.</li>
+  <li>Zum direkten Betrachten der Tabellen wird ein Programm ben&ouml;tigt, welches CSV-Dateien &uuml;bersichtlich darstellen kann (z.B. LibreOffice oder ArcView).</li>
+  <li>Zum Erstellen von PDF-Dateien wird das Programm <a target="_blank" href="https://github.com/ABoehlen/pdc2pdf">pdc2pdf</a> ben&ouml;tigt.</li>
+</ul>
+<hr style="width: 100%; height: 2px;" noshade="noshade"><a name="neuerfassen1"></a>
+<h2>Teilnehmer neu erfassen 1</h2>
+<h3>Ausgangslage</h3>
+<p>keine CSV und LOG Dateien vorhanden.</p>
+<h3>Aktion</h3>
+<ol>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+		 colspan="1"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>./jahresmeisterschaft_main.awk</i></font></td>
+		    </tr>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>erf</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+  <li>Daten eines fiktiven Teilnehmers erfassen.</li>
+  <li>Am Schluss mit der Option &lang;3&rang; zum Hauptprogramm zur&uuml;ckkehren.</li>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>exit</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+</ol>
+<h3>Resultat</h3>
+<ul>
+  <li>Die Dateien <em>teilnehmer.csv</em> und <em>20xxxxxx.log</em> sind vorhanden.</li>
+</ul>
+<h3>Optionen</h3>
+<ul>
+  <li>Der Inhalt der Tabelle mit folgendem Befehl ausgeben und kontrollieren, ob die Werte mit den eingegebenen &uuml;bereinstimmen:</li>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>kontr</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+</ul>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="neuerfassen2"></a>
+<h2>Teilnehmer neu erfassen 2</h2>
+<h3>Ausgangslage</h3>
+<p>Keine CSV und LOG Dateien vorhanden.</p>
+<h3>Aktion</h3>
+<ol>
+  <li>Wie <a href="#neuerfassen1">hier</a> aber am Schluss mit der Option &lang;1&rang; einen weiteren Teilnehmer erfassen.</li>
+  <li>Am Schluss mit der Option &lang;3&rang; zum Hauptprogramm zur&uuml;ckkehren.</li>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>exit</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+</ol>
+<h3>Resultat</h3>
+<ul>
+  <li>Die Dateien <em>teilnehmer.csv</em> und <em>20xxxxxx.log</em> sind vorhanden.</li>
+  <li>Die Tabelle <em>teilnehmer.csv</em> muss die korrekte Struktur aufweisen:<br>
+  <img src="teilnehmer_csv01.png"><br>
+  Falls Umlaute/Sonderzeichen oder Sonderzeichen falsch dargestellt werden, stellt das kein Problem dar.
+  </li>
+</ul>
+<h3>Optionen</h3>
+<ul>
+  <li>Der Inhalt der Tabelle mit folgendem Befehl ausgeben und kontrollieren, ob die Werte mit den eingegebenen &uuml;bereinstimmen:</li>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>kontr</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+</ul>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="korrigieren"></a>
+<h2>Daten eines Teilnehmers korrigieren</h2>
+<h3>Ausgangslage</h3>
+<p>Tabelle <em>teilnehmer.csv</em> muss vorliegen, d.h. z.B. <a href="#neuerfassen2">dieser</a> Testfall muss durchgef&uuml;hrt worden sein.</p>
+<h3>Aktion</h3>
+<ol>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+		 colspan="1"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>./jahresmeisterschaft_main.awk</i></font></td>
+		    </tr>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>korr</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+  <li>Name eines Teilnehmers aus der Liste ausw&auml;hlen.</li>
+  <li>Eines der Schiessen ausw&auml;hlen und einen anderen Wert eintragen.</li>
+  <li>Korrekturmodus mit der Option &lang;2&rang; verlassen.</li>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>exit</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+</ol>
+<h3>Resultat</h3>
+<ul>
+  <li>Die Dateien <em>teilnehmer.csv</em>, <em>teilnehmer.csv.bak</em> und <em>20xxxxxx.log</em> sind vorhanden.</li>
+  <li>In der Tabelle <em>teilnehmer.csv</em> muss der korrigierte Wert stehen.</li>
+  <li>In der Tabelle <em>teilnehmer.csv.bak</em> muss der urspr&uuml;ngliche Wert stehen. Auch die Prozentwerte kontrollieren!</li>
+  <li>Im Logfile muss der korrigierte Wert plus Prozentwert unten aufgef&uuml;hrt sein.</li>
+</ul>
+<h3>Optionen</h3>
+<ul>
+  <li>Ein Schiessresultat so korrigieren, dass die Kranzlimite unter- oder &uuml;berschritten wird. Kontrollieren, dass der Wert im Feld &laquo;Kraenze&raquo; angepasst wurde.</li>
+</ul>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="erf_korr"></a>
+<h2>Daten erfassen und korrigieren</h2>
+<h3>Ausgangslage</h3>
+<p>Keine CSV und LOG Dateien vorhanden.</p>
+<h3>Aktion</h3>
+<ol>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+		 colspan="1"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>./jahresmeisterschaft_main.awk</i></font></td>
+		    </tr>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>erf</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+  <li>Daten eines fiktiven Teilnehmers erfassen.</li>
+  <li>Am Schluss mit der Option &lang;1&rang; einen weiteren Teilnehmer erfassen.</li>
+  <li>Anschliessend mit der Option &lang;2&rang; in den Korrekturmodus wechseln.</li>
+  <li>Name eines Teilnehmers aus der Liste ausw&auml;hlen.</li>
+  <li>Eines der Schiessen ausw&auml;hlen und einen anderen Wert eintragen.</li>
+  <li>Mit der Option &lang;1&rang; im gleichen Stil eine weitere Korrektur durchf&uuml;hren.</li>
+  <li>Anschliessend mit der Option &lang;2&rang; den Korrekturmodus verlassen und mit der Option &lang;1&rang; einen weiteren Teilnehmer erfassen.</li>
+  <li>Am Schluss mit der Option &lang;3&rang; zum Hauptprogramm zur&uuml;ckkehren.</li>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>exit</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+</ol>
+<h3>Resultat</h3>
+<ul>
+  <li>Die Dateien <em>teilnehmer.csv</em>, <em>teilnehmer.csv.bak</em> und <em>20xxxxxx.log</em> sind vorhanden.</li>
+  <li>Die Tabelle <em>teilnehmer.csv</em> muss die korrekte Struktur aufweisen:<br>
+  <img src="teilnehmer_csv02.png"><br>
+  Falsch angezeigte Umlaute/Sonderzeichen stellen kein Problem dar.
+  </li>
+  <li>im Logfile m&uuml;ssen die erfassten und korrigierten Resultate in der richtigen Reihenfolge aufgef&uuml;hrt sein.</li>
+</ul>
+<h3>Optionen</h3>
+<ul>
+  <li>Der Inhalt der Tabelle mit folgendem Befehl ausgeben und kontrollieren, ob die Werte mit den eingegebenen &uuml;bereinstimmen:</li>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>kontr</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+</ul>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="ausw"></a>
+<h2>Daten auswerten</h2>
+<h3>Ausgangslage</h3>
+<p>Tabelle <em>teilnehmer.csv</em> (ANSI codiert) aus dem Ordner <em>testdaten</em> im Arbeitsverzeichnis vorhanden.</p>
+<h3>Aktion</h3>
+<ol>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+		 colspan="1"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>./jahresmeisterschaft_main.awk</i></font></td>
+		    </tr>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>calc rang</i></font></td>
+		    </tr>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>exit</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+</ol>
+<h3>Resultat</h3>
+<ul>
+  <li>Die Dateien <em>auswertung.csv</em>, <em>uebersicht.txt</em> und <em>20xxxxxx.log</em> sind vorhanden.</li>
+  <li>Die Tabelle <em>auswertung.csv</em> muss die korrekte Struktur aufweisen und die neuen Felder &laquo;Gutpte&raquo; und &laquo;Resultate&raquo; mit folgenden Zahlen zeigen:<br>
+  <img src="auswertung_csv.png"><br>
+  <li>Die Datei <em>uebersicht.txt</em> im Editor &ouml;ffnen und folgendes kontrollieren:
+  <ul>
+    <li>Bei der Teilnehmerin Bysbil Greti muss bei <em>Resultat</em> &laquo;Zuwenig Resultate&raquo; stehen.</li>
+    <li>Das Resultat von Eksempel Hugo ist 498.125.</li>
+    <li>Das Resultat von Probe Hausi ist 789.068.</li>
+  </ul>
+  </li>
+</ul>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="rangl"></a>
+<h2>Rangliste erstellen</h2>
+<h3>Ausgangslage</h3>
+<p>Tabelle <em>teilnehmer.csv</em> (ANSI codiert) aus dem Ordner <em>testdaten</em> im Arbeitsverzeichnis vorhanden und <a href="#ausw">Testfall Auswerten</a> durchgef&uuml;hrt.</p>
+<h3>Aktion</h3>
+<ol>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+		 colspan="1"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>./jahresmeisterschaft_main.awk</i></font></td>
+		    </tr>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>plo rangp</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+  <li>Als Jahr &lang;2018&rang; eingeben.</li>
+  <li>Die Anzahl Teilnehmer der Kategorie A sind &lang;5&rang;.</li>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>exit</i></font></td>
+		    </tr>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+		 colspan="1"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>./pdc2pdf_main.awk rangliste_2018.pdc</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>  
+</ol>
+<h3>Resultat</h3>
+<ul>
+  <li>Die Dateien <em>rangliste_2018.pdc</em> und <em>rangliste_2018.pdf</em> sind vorhanden.</li>
+  <li>Die Datei <em>rangliste_2018.pdf</em> im Acrobat Reader &ouml;ffnen und folgendes kontrollieren:
+  <ul>
+    <li>Die Formatierung ist korrekt und die Textelemente sind sauber angeordnet.</li>
+    <li>Alle Resultate haben 3 Stellen vor und 3 Stellen nach dem Dezimalpunkt.<br />
+    --> falls nicht, manuell im PDC-File anpassen.</li>
+    <li>Umlaute und andere Sonderzeichen erscheinen korrekt.<br />
+    --> falls nicht, kontrollieren, dass <em>auswertung.csv</em> ANSI-codiert ist.</li>
+    <li>Das Erstellungsdatum (unten rechts) stimmt mit dem aktuellen Datum &uuml;berein.</li>
+    <li>In der Kategorie A sind 5, in der Kategorie B 8 Teilnehmer aufgef&uuml;hrt.</li>
+    <li>Bysbil Greti erscheinen am Ende mit dem Vermerk &laquo;Zuwenig Resultate&raquo;.</li>
+    <li>Auf Platz 1 der Kategorie A ist Muschdrr Rüedu mit 799.376 Punkten.</li>
+    <li>Auf Platz 1 der Kategorie B ist Muster Max mit 542.337 Punkten.</li>
+    <li>Die letzten 3 Teilnehmer der Kategorie A sind mit * gekennzeichnet, die ersten 3 der Kategorie B mit **.</li>
+    <li>Die Legende von * und ** verweist auf das Folgejahr 2019.</li>
+    <li>Bei den jeweils 3 ersten Teilnehmer steht &laquo;(Preis)&raquo;.</li>
+    <li>Die Zahl bei &laquo;Beteiligung&raquo; stimmt mit der Summe der Teilnehmer von Kategorie A und B &uuml;berein.<br />
+    --> falls nicht, manuell im PDC-File anpassen.</li>
+    <li>Die Summe der jeweiligen Gutpunkte ist korrekt.</li>
+  </ul>
+  </li>
+</ul>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="nf_wert"></a>
+<h2>Wertpunkte nachf&uuml;hren</h2>
+<h3>Ausgangslage</h3>
+<p>Tabellen <em>teilnehmer.csv</em> und <em>wertpunkte_2017.csv</em> (ANSI codiert) aus dem Ordner <em>testdaten</em> im Arbeitsverzeichnis vorhanden und <a href="#rangl">Testfall Rangliste</a> durchgef&uuml;hrt.</p>
+<h3>Aktion</h3>
+<ol>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+		 colspan="1"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>./jahresmeisterschaft_main.awk</i></font></td>
+		    </tr>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>calc wert</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+  <li>Als Jahr &lang;2018&rang; eingeben.</li>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>exit</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li> 
+</ol>
+<h3>Resultat</h3>
+<ul>
+  <li>Die neue Datei <em>wertpunkte_2018.csv</em> und die ge&auml;nderte Datei <em>wertpunkte_2017.csv</em> sind vorhanden.</li>
+  <li>Die Tabelle von 2017 muss 3 Spalten aufweisen, jene von 2018 deren 2<br>
+  <img src="wertpunktetabellen1.png"><br>
+  <li>Beide Tabellen enthalten 15 Eintr&auml;ge.</li>
+  <li>Die Werte im Feld &laquo;2018&raquo; der Tabelle <em>wertpunkte_2017.csv</em> entsprechen den jeweiligen Gutpunktetotalen der <em>rangliste_2018.pdf</em>.</li>
+  <li>Die Werte im Feld &laquo;2018&raquo; der Tabelle <em>wertpunkte_2018.csv</em> entsprechen der Summe der Werte der beiden Felder &laquo;2017&raquo; und &laquo;2018&raquo; der Tabelle <em>wertpunkte_2017.csv</em>.</li>
+</ul>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<a name="wertpunktestand"></a>
+<h2>&Uuml;bersicht Wertpunkte erstellen</h2>
+<h3>Ausgangslage</h3>
+<p><a href="#nf_wert">Testfall Wertpunkte nachf&uuml;hren</a> durchgef&uuml;hrt und entsprechende Dateien vorhanden.</p>
+<h3>Aktion</h3>
+<ol>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+		 colspan="1"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>./jahresmeisterschaft_main.awk</i></font></td>
+		    </tr>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>plo wertp</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>
+  <li>Als Jahr &lang;2018&rang; eingeben.</li>
+  <li>Die Wertpunktetabelle des Vorjahres heisst &lang;wertpunkte_2017.csv&rang;.</li>
+  <li>
+	  <table style="height: 28px; width: 600px;" border="1" cellpadding="1">
+		  <tbody>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td colspan="2" height="14"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>exit</i></font></td>
+		    </tr>
+		    <tr align="left" bgcolor="#ccffff" valign="top">
+		      <td style="height: 14px; background-color: rgb(192, 192, 192);"
+		 colspan="1"><font color="#000000" size="3"><i><span
+		 style="font-weight: bold;"></span>./pdc2pdf_main.awk wertpunkte_2018.pdc</i></font></td>
+		    </tr>
+		  </tbody>
+	  </table>
+  </li>  
+</ol>
+<h3>Resultat</h3>
+<ul>
+  <li>Die Datei <em>wertpunkte_2018.csv</em> und die ge&auml;nderte Datei <em>wertpunkte_2017.csv</em> sind vorhanden.</li>
+  <li>Beide Tabellen m&uuml;ssen 2 Spalten aufweisen.<br>
+  <img src="wertpunktetabellen2.png"><br>
+  <li>Die Dateien <em>wertpunkte_2018.pdc</em> und <em>wertpunkte_2018.pdf</em> sind vorhanden.</li>
+  <li>Die Datei <em>wertpunkte_2018.pdf</em> im Acrobat Reader &ouml;ffnen und folgendes kontrollieren:
+  <ul>
+    <li>Die Formatierung ist korrekt und die Tabelle ist sauber angeordnet.</li>
+    <li>In jeder Zelle steht ein Eintrag.</li>
+    <li>Umlaute und andere Sonderzeichen erscheinen korrekt.</li>
+    <li>Das Erstellungsdatum (unten rechts) stimmt mit dem aktuellen Datum &uuml;berein.</li>
+    <li>In der Spalte &laquo;2018 bezogen&raquo; steht &uuml;berall eine 0.</li>
+    <li>Die Werte im Feld &laquo;2018&raquo; entsprechen den jeweiligen Gutpunktetotalen der <em>rangliste_2018.pdf</em>.</li>
+    <li>Die Summe der Spalte &laquo;1.1.2018&raquo; lautet 1453.</li>
+    <li>Die Summe der Spalte &laquo;2018&raquo; lautet 208.</li>
+    <li>Die Summe der Spalte &laquo;Total Ende 2018&raquo; lautet 1661.</li>
+    <li>Die Werte der Spalte &laquo;1.1.2018&raquo; entsprechen den Werten in der Tabelle <em>wertpunkte_2017.csv</em>.</li>
+    <li>Die Werte der Spalte &laquo;Total Ende 2018&raquo; entsprechen den Werten in der Tabelle <em>wertpunkte_2018.csv</em>.</li>
+  </ul>
+  </li>
+</ul>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+<div id="Fussnote"><em>A Bluefish 1.0.7-Production, Adrian B&ouml;hlen</em></div>
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+</body>
+</html>
