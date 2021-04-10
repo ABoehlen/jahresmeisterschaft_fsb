@@ -1,0 +1,63 @@
+#!/bin/bash
+###############################################################
+#
+# Build-Script fuer Jahresmeisterschaftsprogramm    10.04.2021
+# Autor: Adrian Boehlen
+#
+# erzeugt aus den einzelnen Modulen eine AWK-Datei
+#
+###############################################################
+
+if [ $# != 1 ]
+then
+  echo ' ' 
+  echo ' '
+  echo '*****************************'
+  echo 'usage:  build_jm <resultfile>'
+  echo '*****************************'
+  echo ' '
+  echo '(Beispiel: build_jm jmprog.awk)'
+  echo ' '
+  echo ' '
+  exit
+fi
+
+# aktuellen Zeitpunkt festlegen
+jetzt=`date -d now +%Y%m%d%H%M%S`
+
+# Inhalt der Module zusammenfuehren
+cat jahresmeisterschaft_main.awk > $1
+cat Erfassen.awk >> $1
+cat Kontrolle.awk >> $1
+cat Korrektur.awk >> $1
+cat Calc_Rangliste.awk >> $1
+cat Calc_Wertpunkte.awk >> $1
+cat HTML_Rangliste.awk >> $1
+cat HTML_Wertpunkte.awk  >> $1
+cat Parameter.awk  >> $1
+cat Funktionen_erfassen.awk >> $1
+cat Funktionen_umrechnen.awk >> $1
+cat Funktionen_diverse.awk >> $1
+cat Standblattprogramm.awk >> $1
+cat PDC_Rangliste.awk >> $1
+cat PDC_Wertpunkte.awk >> $1
+# Folgende Pfade gemaess Installationsverzeichnis anpassen
+cat ../pdc2pdf/PDF_header.awk >> $1
+cat ../pdc2pdf/PDF_pages_font.awk >> $1
+cat ../pdc2pdf/PDF_page.awk >> $1
+cat ../pdc2pdf/PDF_inhalt.awk >> $1
+cat ../pdc2pdf/PDF_trailer.awk >> $1
+cat ../pdc2pdf/PDF_funktionen.awk >> $1
+cat ../pdc2pdf/PDF_xref.awk >> $1
+
+# Header bereinigen und aufraeumen
+sed '/eingebundene Module/d' $1 > tmp1.txt
+sed '/@include/d' tmp1.txt > tmp2.txt
+sed '/Es werden diverse Module/d' tmp2.txt > tmp1.txt
+sed '/Zum Ableiten einer Standalone/d' tmp1.txt > tmp2.txt
+sed  "s/Jahresmeisterschaft V2.*20../Jahresmeisterschaft V2.1 Build ${jetzt}/1" tmp2.txt > $1
+rm -f tmp1.txt
+rm -f tmp2.txt
+
+chmod +x $1
+echo 'Programmdatei '$1' wurde erfolgreich angelegt'

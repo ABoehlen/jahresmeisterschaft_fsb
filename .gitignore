@@ -1,0 +1,18 @@
+# Documentation
+dok/anleitung_jahresmeisterschaftsprogramm_v1-1-19.pdf
+dok/anleitung_jahresmeisterschaftsprogramm_v2-0-0.pdf
+dok/anleitung_jahresmeisterschaftsprogramm_v2-0-2.pdf
+dok/anleitung_jahresmeisterschaftsprogramm_v2-0-11.pdf
+dok/index.html~
+dok/index_20071230.html
+dok/index_20141105.html
+dok/notes.txt
+
+# Old files
+dok/old
+
+# Test and temporary files
+tmp
+
+# Misc
+pdc2pdf.awk
