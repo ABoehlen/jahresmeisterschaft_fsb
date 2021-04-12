@@ -1,6 +1,6 @@
 #########################################################################################
 #
-# Funktionen_diverse V2.1.2   17.11.2019
+# Funktionen_diverse V2.1.3   12.04.2021
 #
 # Autor: Adrian Boehlen
 #
@@ -61,7 +61,7 @@ function calc_zuschlag(kategorie, schiessen) {
     if (schiessen == "kun")
       return zuschlag["kun"];
     else {
-      print "Fehler in \"Funktionen_diverse.awkm\"";
+      print "Fehler in \"Funktionen_diverse.awk\"";
       return 0;  # darf nicht vorkommen
     }
   }

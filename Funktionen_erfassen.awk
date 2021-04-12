@@ -1,6 +1,6 @@
 #########################################################################################
 #
-# Funktionen_erfassen V2.0.6   24.10.2018
+# Funktionen_erfassen V2.0.7   12.04.2021
 #
 # Autor: Adrian Boehlen
 #
@@ -96,7 +96,7 @@ function erf_ews(kategorie,eingabe,    eing_kr, feld, kr, prozent, resultat, zus
     else if (feld ~ /[de]/)
       prozent = proz_ews_de(resultat, zuschlag);
     else {
-      print "Fehler in \"Funktionen_erfassen.awkm\"";
+      print "Fehler in \"Funktionen_erfassen.awk\"";
       return;  # darf nicht vorkommen
     }
     return resultat " " prozent " " zuschlag " " kr " " feld;
