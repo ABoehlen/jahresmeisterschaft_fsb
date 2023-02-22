@@ -1,10 +1,10 @@
 # Jahresmeisterschaft FS Bolligen: Auswertungsprogramm
 
 ## Purpose
-This program is used to evaluate the annual championship (Jahresmeisterschaft) of the shooting club "Feldschützengesellschaft Bolligen"
+This program was used to evaluate the annual championship (Jahresmeisterschaft) of the shooting club "Feldschützengesellschaft Bolligen". Parts of the program may also be useful for other similiar tasks.
 
 ## Background
-The program is used to evaluate the annual championship of the "Feldschützengesellschaft Bolligen" at the end of each shooting season. Based on the instructions \[1\] it performs all the needed calculations automatically as far as possible and outputs the results in a graphically appealing form.
+The program was used until 2019 to evaluate the annual championship of the "Feldschützengesellschaft Bolligen" at the end of each shooting season. Based on the instructions \[1\] it performs all the needed calculations automatically as far as possible and outputs the results in a graphically appealing form.
 
 The created data will be stored in an automatically generated table and kept during processes within a traditional two-dimensional array, as described by the authors of AWK in their famous 1988 book \[2\].
 
